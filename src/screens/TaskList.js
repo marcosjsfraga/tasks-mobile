@@ -21,6 +21,7 @@ import AddTask from "./AddTask";
 export default class TaskList extends Component {
 	state = {
 		showDoneTasks: true,
+		showAddTask: false,
 		visibleTasks: [],
 		tasks: [
 			{
@@ -73,21 +74,18 @@ export default class TaskList extends Component {
 	};
 
 	render() {
-		const today = moment()
-			.locale('pt-br')
-			.format('ddd, D [de] MMMM');
+		const today = moment().locale('pt-br').format('ddd, D [de] MMMM');
 
 		return (
 			<View style={styles.container}>
+				{/* MODAL  */}
+				<AddTask isVisible={this.state.showAddTask} onCancel={() => this.setState({ showAddTask: false })} />
+				
 				<ImageBackground source={todayImage} style={styles.background}>
 					<View style={styles.iconBar}>
 						<TouchableOpacity onPress={this.toggleFilter}>
-							<Icon
-								name={
-									this.state.showDoneTasks
-										? "eye"
-										: "eye-slash"
-								}
+							<Icon 
+								name={ this.state.showDoneTasks ? "eye" : "eye-slash" }
 								size={25}
 								color={commonStyles.colors.secondary}
 							/>
@@ -107,6 +105,13 @@ export default class TaskList extends Component {
 						)}
 					/>
 				</View>
+				<TouchableOpacity 
+					style={styles.addButton}
+					activeOpacity={0.7}
+					onPress={() => this.setState({ showAddTask: true })}
+				>
+					<Icon name='plus'size={20} color={commonStyles.colors.secondary}/>
+				</TouchableOpacity>
 			</View>
 		);
 	}
@@ -146,4 +151,17 @@ const styles = StyleSheet.create({
 		justifyContent: "flex-end",
 		marginTop: Platform.OS === 'ios' ? 40 : 10
 	},
+	addButton: {
+		position: 'absolute',
+		right: 30,
+		bottom: 30,
+		width: 50,
+		height: 50,
+		borderRadius: 25,
+		backgroundColor: commonStyles.colors.today,
+		justifyContent: 'center',
+		alignItems: 'center',
+
+	}
+
 });
