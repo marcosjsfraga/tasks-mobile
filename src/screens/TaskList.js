@@ -36,7 +36,7 @@ export default class TaskList extends Component {
 	componentDidMount = async () => {
 		const stateString = await AsyncStorage.getItem('tasksState'); // this.filterTasks();
 		const state = JSON.parse(stateString) || initialState;
-		this.setState(state);
+		this.setState(state, this.filterTasks);
 	};
 
 	toggleFilter = () => {
