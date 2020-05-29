@@ -10,9 +10,7 @@ import {
 	Platform
 } from "react-native";
 import moment from 'moment';
-
 import DateTimePicker from '@react-native-community/datetimepicker';
-
 import commonStyles from '../commonStyles';
 
 const initialState = { desc: '', date: new Date(), showDatePicker: false }
