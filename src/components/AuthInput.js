@@ -16,16 +16,17 @@ const styles = StyleSheet.create({
         backgroundColor: '#eee',
         width: '100%',
         height: 40,
-        borderRadius: 20,
+        borderRadius: 7,
         flexDirection: 'row',
-        alignItems: 'center'
+        alignItems: 'center',
+        marginBottom: 5
     },
     icon: {
-        color: '#333',
-        marginLeft: 20,
+        color: '#666',
+        marginLeft: 10,
     },
     input: {
-        marginLeft: 20,
+        marginLeft: 10,
         width: '70%',
     }
 });

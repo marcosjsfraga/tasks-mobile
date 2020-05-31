@@ -14,7 +14,7 @@ import 'moment/locale/pt-br';
 
 export default props => {
 	const doneOrNotStyle = props.doneAt != null ? { textDecorationLine: "line-through" } : {};
-	const formatedDate = moment(props.estimateAt).locale("pt-br").format('ddd, D [de] MMMM');
+	const formattedDate = moment(props.estimateAt).locale("pt-br").format('ddd, D [de] MMMM');
 
 	getRightContent = () => {
 		return (
@@ -49,7 +49,7 @@ export default props => {
 				</TouchableWithoutFeedback>
 				<View>
 					<Text style={[styles.desc, doneOrNotStyle]}>{props.desc}</Text>
-					<Text style={styles.date}>{formatedDate}</Text>
+					<Text style={styles.date}>{formattedDate}</Text>
 				</View>
 			</View>
 		</Swipeable>
@@ -101,7 +101,8 @@ const styles = StyleSheet.create({
 	desc: {
 		fontFamily: commonStyles.fontFamily,
 		color: commonStyles.colors.mainText,
-		fontSize: 15,
+		fontSize: 20,
+		fontWeight: 'bold'
 	},
 	date: {
 		fontFamily: commonStyles.fontFamily,
