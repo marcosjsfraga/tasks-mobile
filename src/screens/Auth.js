@@ -59,6 +59,8 @@ export default class Auth extends Component {
                 password: this.state.password,
             });
 
+            AsyncStorage.setItem('userData', JSON.stringify(res.data));
+            
             axios.defaults.headers.common['Authorization'] = `bearer ${res.data.token}`;
             this.props.navigation.navigate('Home', res.data);
         } catch (error) {
